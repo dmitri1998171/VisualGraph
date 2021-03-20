@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include "GL/glut.h"
 #include "GL/glu.h"
-#include "GL/glui.h"
-#include "header.h"
-#include "glui_header.h"
+#include "include/glui.h"
+#include "include/basic.h"
+#include "include/functions.h"
 
 using namespace std;
 

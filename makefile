@@ -1,10 +1,19 @@
-BIN_1 := main 
-SOURCES_1 := main.cpp
-CC := c++
-CFLAGS :=
-LDFLAGS := -L./ -lGL -lGLU -lglut -lglui
+BIN := main 
+SOURCES := main.cpp
+CC := g++
+CFLAGS := -g -Wall
+DEPENDENCIES = glut_install.sh
 
-$(BIN_1): $(SOURCES_1) $(DEPENDENCIES)
-	clear && $(CC) $(SOURCES_1) $(DEPENDENCIES) $(LDFLAGS) -o $(BIN_1)
+LIBS = -lXmu -lXext -lX11 -lXi -lm
+LIBGL = -lGLU -lGL -lglut
+LIBGLUI = -L./lib -lglui
+GLUI_LIB := lib/libglui.a
+
+$(BIN): $(SOURCES) $(GLUI_LIB)
+	clear && mkdir -p bin && $(CC) $(SOURCES) $(CFLAGS) $(LIBGLUI) $(LIBGL) $(LIBS) -o bin/$(BIN)
+
+depend: 
+	./$(DEPENDENCIES)
+
 clean:
-	rm -rf $(BIN_1)
+	rm -rf bin/$(BIN)
